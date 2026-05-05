@@ -1,14 +1,14 @@
 const db = require('./database');
 
-function addEmployee(employee, callback) {
-  const sql = 'INSERT INTO funcionarios (nome, cargo, salario) VALUES (?, ?, ?)';
-  db.query(sql, [employee.nome, employee.cargo, employee.salario], (err, result) => {
+function addFuncionary(funcionary, callback) {
+  const sql = 'INSERT INTO funcionarios (firstName, lastName, cargo, salario) VALUES (?, ?, ?, ?)';
+  db.query(sql, [funcionary.firstName, funcionary.lastName, funcionary.cargo, funcionary.salario], (err, result) => {
     if (err) return callback(err);
-    callback(null, { id: result.insertId, ...employee });
+    callback(null, { id: result.insertId, ...funcionary });
   });
 }
 
-function getAllEmployees(callback) {
+function getAllFuncionaries(callback) {
   const sql = 'SELECT * FROM funcionarios';
   db.query(sql, (err, results) => {
     if (err) return callback(err);
@@ -16,7 +16,7 @@ function getAllEmployees(callback) {
   });
 }
 
-function getEmployeeById(id, callback) {
+function getFuncionaryById(id, callback) {
   const sql = 'SELECT * FROM funcionarios WHERE id = ?';
   db.query(sql, [id], (err, results) => {
     if (err) return callback(err);
@@ -24,15 +24,15 @@ function getEmployeeById(id, callback) {
   });
 }
 
-function updateEmployee(id, employee, callback) {
-  const sql = 'UPDATE funcionarios SET nome = ?, cargo = ?, salario = ? WHERE id = ?';
-  db.query(sql, [employee.nome, employee.cargo, employee.salario, id], (err, result) => {
+function updateFuncionary(id, funcionary, callback) {
+  const sql = 'UPDATE funcionarios SET firstName = ?, lastName = ?, cargo = ?, salario = ? WHERE id = ?';
+  db.query(sql, [funcionary.firstName, funcionary.lastName, funcionary.cargo, funcionary.salario, id], (err, result) => {
     if (err) return callback(err);
     callback(null, result.affectedRows);
   });
 }
 
-function deleteEmployee(id, callback) {
+function deleteFuncionary(id, callback) {
   const sql = 'DELETE FROM funcionarios WHERE id = ?';
   db.query(sql, [id], (err, result) => {
     if (err) return callback(err);
@@ -41,9 +41,9 @@ function deleteEmployee(id, callback) {
 }
 
 module.exports = {
-  addEmployee,
-  getAllEmployees,
-  getEmployeeById,
-  updateEmployee,
-  deleteEmployee
+  addFuncionary,
+  getAllFuncionaries,
+  getFuncionaryById,
+  updateFuncionary,
+  deleteFuncionary
 };

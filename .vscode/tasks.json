@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Criar banco de dados MySQL",
+      "type": "shell",
+      "command": "mysql",
+      "args": ["-u", "root", "--password=", "<", "${workspaceFolder}\\database.sql"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

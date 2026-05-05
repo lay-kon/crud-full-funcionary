@@ -3,8 +3,8 @@ const mysql = require('mysql2');
 // Configuração simples do MySQL. Ajuste com seu usuário, senha e nome do banco.
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'tyler',
-  password: 'mysql@MIC365',
+  user: 'root',
+  password: '',
   database: 'crud_funcionario'
 });
 
